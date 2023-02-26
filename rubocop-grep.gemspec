@@ -4,7 +4,7 @@ require_relative "lib/rubocop/grep/version"
 
 Gem::Specification.new do |spec|
   spec.name = "rubocop-grep"
-  spec.version = Rubocop::Grep::VERSION
+  spec.version = RuboCop::Grep::VERSION
   spec.authors = ["Masataka Pocke Kuwabara"]
   spec.email = ["kuwabara@pocke.me"]
 
@@ -35,4 +35,7 @@ Gem::Specification.new do |spec|
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
+
+  spec.add_runtime_dependency 'rubocop'
 end
+
