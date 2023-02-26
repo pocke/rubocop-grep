@@ -6,6 +6,14 @@ sources:
   repo_dir: gems
 path: ".gem_rbs_collection"
 gems:
+- name: pathname
+  version: '0'
+  source:
+    type: stdlib
+- name: yaml
+  version: '0'
+  source:
+    type: stdlib
 - name: ast
   version: '2.4'
   source:
@@ -22,4 +30,12 @@ gems:
     revision: 03012a67119a706eb045ed758b8366b03eefc3cd
     remote: https://github.com/ruby/gem_rbs_collection.git
     repo_dir: gems
+- name: dbm
+  version: '0'
+  source:
+    type: stdlib
+- name: pstore
+  version: '0'
+  source:
+    type: stdlib
 gemfile_lock_path: Gemfile.lock

@@ -1,6 +1,9 @@
-module Rubocop
+module RuboCop
   module Grep
     VERSION: String
-    # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+
+    PROJECT_ROOT: Pathname
+    CONFIG_DEFAULT: Pathname
+    CONFIG: untyped
   end
 end

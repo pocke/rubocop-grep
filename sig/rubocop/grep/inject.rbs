@@ -1,0 +1,7 @@
+module RuboCop
+  module Grep
+    module Inject
+      def self.defaults!: () -> void
+    end
+  end
+end

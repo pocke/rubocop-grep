@@ -1,0 +1,10 @@
+module RuboCop
+  class ConfigLoader
+    def self.debug?: () -> boolish
+    def self.merge_with_default: (Config, String) -> Config
+  end
+
+  class Config
+    def initialize: (Hash[untyped, untyped], String) -> void
+  end
+end

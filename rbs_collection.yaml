@@ -47,3 +47,5 @@ gems:
     ignore: true
   - name: rubocop-grep
     ignore: true
+  - name: pathname
+  - name: yaml
