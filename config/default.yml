@@ -1,6 +1,6 @@
 # Write it!
 
 Grep/Grep:
-  Description: 'TODO: Write a description of the cop.'
-  Enabled: pending
-  VersionAdded: '<<next>>'
+  Description: 'It is a RuboCop extension to define your own cop with regexps.'
+  Enabled: true
+  VersionAdded: '0.1'
