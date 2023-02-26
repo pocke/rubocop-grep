@@ -1,0 +1,49 @@
+# Download sources
+sources:
+  - name: ruby/gem_rbs_collection
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    revision: main
+    repo_dir: gems
+
+# A directory to install the downloaded RBSs
+path: .gem_rbs_collection
+
+gems:
+  # Skip loading rbs gem's RBS.
+  # It's unnecessary if you don't use rbs as a library.
+  - name: rbs
+    ignore: true
+  - name: steep
+    ignore: true
+  - name: activesupport
+    ignore: true
+  - name: concurrent-ruby
+    ignore: true
+  - name: csv
+    ignore: true
+  - name: fileutils
+    ignore: true
+  - name: i18n
+    ignore: true
+  - name: json
+    ignore: true
+  - name: listen
+    ignore: true
+  - name: logger
+    ignore: true
+  - name: minitest
+    ignore: true
+  - name: parallel
+    ignore: true
+  - name: securerandom
+    ignore: true
+  - name: strscan
+    ignore: true
+  - name: forwardable
+    ignore: true
+  - name: monitor
+    ignore: true
+  - name: mutex_m
+    ignore: true
+  - name: rubocop-grep
+    ignore: true

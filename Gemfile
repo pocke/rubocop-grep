@@ -10,3 +10,6 @@ gem "rake", "~> 13.0"
 gem "rspec", "~> 3.0"
 
 gem "rubocop", "~> 1.21"
+
+gem 'steep', require: false
+gem 'rbs', '< 3', require: false
