@@ -30,4 +30,21 @@ RSpec.describe RuboCop::Cop::Grep::Grep, :config do
       RUBY
     end
   end
+
+  context 'with a config including multiple rules' do
+    let(:cop_config) { {
+      'rules' => [
+        { 'pattern' => 'foo', 'message' => 'foo is bad' },
+        { 'pattern' => 'bar', 'message' => 'bar is bad' },
+      ],
+    } }
+
+    it 'registers multiple offences' do
+      expect_offense(<<~RUBY)
+        foo bar
+        ^^^ foo is bad
+            ^^^ bar is bad
+      RUBY
+    end
+  end
 end
