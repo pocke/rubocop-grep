@@ -54,10 +54,12 @@ module RuboCop
 
             patterns.each do |pat|
               re = Regexp.new(pat)
-              if m = re.match(source)
+              from = 0
+              while m = re.match(source, from)
                 pos = position_from_matchdata(m)
                 range = source_range(processed_source.buffer, pos[:line], pos[:column], pos[:length])
                 add_offense(range, message: rule['message'])
+                from = m.end(0) || raise
               end
             end
           end
@@ -73,6 +75,7 @@ module RuboCop
           { line: line, column: column, length: length }
         end
       end
+
       Grep = _ = Grepx
     end
   end
