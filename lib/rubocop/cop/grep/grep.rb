@@ -43,8 +43,34 @@ module RuboCop
       #   good_foo_method(args)
       #
       class Grepx < Base
-        def on_send(node)
-          add_offense(node)
+        include RangeHelp
+
+        def on_new_investigation
+          source = processed_source.raw_source
+
+          cop_config['rules'].each do |rule|
+            # @type var patterns: Array[String]
+            patterns = _ = Array(rule['pattern'])
+
+            patterns.each do |pat|
+              re = Regexp.new(pat)
+              if m = re.match(source)
+                pos = position_from_matchdata(m)
+                range = source_range(processed_source.buffer, pos[:line], pos[:column], pos[:length])
+                add_offense(range, message: rule['message'])
+              end
+            end
+          end
+        end
+
+        def position_from_matchdata(m)
+          pre_match = m.pre_match
+          line = pre_match.count("\n") + 1
+          column = pre_match[/^([^\n]*)\z/, 1]&.size || 0
+          matched = m[0] or raise
+          length = matched.size
+
+          { line: line, column: column, length: length }
         end
       end
       Grep = _ = Grepx

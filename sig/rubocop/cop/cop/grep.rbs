@@ -2,6 +2,25 @@ module RuboCop
   module Cop
     module Grep
       class Grepx < ::RuboCop::Cop::Base
+        include RangeHelp
+
+        type config = {
+          'rules' => Array[{
+            'pattern' => String | Array[String],
+            'message' => String,
+            'comment' => bool?,
+          }]
+        }
+
+        def on_new_investigation: () -> void
+
+        def position_from_matchdata: (MatchData) -> {
+          line: Integer,
+          column: Integer,
+          length: Integer,
+        }
+
+        def cop_config: () -> config
       end
       # HACK: Steep has a bug when the class name is the same as the parent namespace name.
       class Grep = Grepx

@@ -1,21 +1,22 @@
 # frozen_string_literal: true
 
 RSpec.describe RuboCop::Cop::Grep::Grep, :config do
-  let(:config) { RuboCop::Config.new }
+  let(:cop_config) { {
+    'rules' => [
+      { 'pattern' => 'foo', 'message' => 'foo is bad' },
+    ],
+  } }
 
-  # TODO: Write test code
-  #
-  # For example
-  it 'registers an offense when using `#bad_method`' do
+  it 'registers an offence when the regexp matches' do
     expect_offense(<<~RUBY)
-      bad_method
-      ^^^^^^^^^^ Use `#good_method` instead of `#bad_method`.
+      foo bar
+      ^^^ foo is bad
     RUBY
   end
 
-  it 'does not register an offense when using `#good_method`' do
+  it 'does not register an offense when the regexp does not matche' do
     expect_no_offenses(<<~RUBY)
-      good_method
+      bar
     RUBY
   end
 end
