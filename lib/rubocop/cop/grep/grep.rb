@@ -42,17 +42,12 @@ module RuboCop
       #   # good
       #   good_foo_method(args)
       #
-      class Grep < Base
-        def_node_matcher :bad_method?, <<~PATTERN
-          (send nil? :bad_method ...)
-        PATTERN
-
+      class Grepx < Base
         def on_send(node)
-          return unless bad_method?(node)
-
           add_offense(node)
         end
       end
+      Grep = _ = Grepx
     end
   end
 end

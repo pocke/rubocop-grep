@@ -1,8 +1,10 @@
 module RuboCop
   module Cop
     module Grep
-      class Grep < ::RuboCop::Cop::Base
+      class Grepx < ::RuboCop::Cop::Base
       end
+      # HACK: Steep has a bug when the class name is the same as the parent namespace name.
+      class Grep = Grepx
     end
   end
 end

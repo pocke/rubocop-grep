@@ -11,5 +11,5 @@ gem "rspec", "~> 3.0"
 
 gem "rubocop", "~> 1.21"
 
-gem 'steep', require: false
-gem 'rbs', '< 3', require: false
+gem 'steep', '1.4.0.dev.2', require: false
+gem 'rbs', require: false
