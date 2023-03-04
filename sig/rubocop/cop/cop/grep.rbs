@@ -5,10 +5,10 @@ module RuboCop
         include RangeHelp
 
         type config = {
-          'rules' => Array[{
-            'pattern' => String | Array[String],
-            'message' => String,
-            'comment' => bool?,
+          'Rules' => Array[{
+            'Pattern' => String | Array[String],
+            'Message' => String,
+            'Comment' => bool?,
           }]
         }
 

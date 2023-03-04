@@ -48,9 +48,9 @@ module RuboCop
         def on_new_investigation
           source = processed_source.raw_source
 
-          cop_config['rules'].each do |rule|
+          cop_config['Rules'].each do |rule|
             # @type var patterns: Array[String]
-            patterns = _ = Array(rule['pattern'])
+            patterns = _ = Array(rule['Pattern'])
 
             patterns.each do |pat|
               re = Regexp.new(pat)
@@ -58,7 +58,7 @@ module RuboCop
               while m = re.match(source, from)
                 pos = position_from_matchdata(m)
                 range = source_range(processed_source.buffer, pos[:line], pos[:column], pos[:length])
-                add_offense(range, message: rule['message'])
+                add_offense(range, message: rule['Message'])
                 from = m.end(0) || raise
               end
             end

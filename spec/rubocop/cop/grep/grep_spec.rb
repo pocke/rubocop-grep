@@ -3,8 +3,8 @@
 RSpec.describe RuboCop::Cop::Grep::Grep, :config do
   context 'with a simple config' do
     let(:cop_config) { {
-      'rules' => [
-        { 'pattern' => 'foo', 'message' => 'foo is bad' },
+      'Rules' => [
+        { 'Pattern' => 'foo', 'Message' => 'foo is bad' },
       ],
     } }
 
@@ -33,9 +33,9 @@ RSpec.describe RuboCop::Cop::Grep::Grep, :config do
 
   context 'with a config including multiple rules' do
     let(:cop_config) { {
-      'rules' => [
-        { 'pattern' => 'foo', 'message' => 'foo is bad' },
-        { 'pattern' => 'bar', 'message' => 'bar is bad' },
+      'Rules' => [
+        { 'Pattern' => 'foo', 'Message' => 'foo is bad' },
+        { 'Pattern' => 'bar', 'Message' => 'bar is bad' },
       ],
     } }
 
