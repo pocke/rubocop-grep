@@ -43,19 +43,6 @@ module RuboCop
       #   good_foo_method(args)
       #
       class Grep < Base
-        # TODO: Implement the cop in here.
-        #
-        # In many cases, you can use a node matcher for matching node pattern.
-        # See https://github.com/rubocop/rubocop-ast/blob/master/lib/rubocop/ast/node_pattern.rb
-        #
-        # For example
-        MSG = 'Use `#good_method` instead of `#bad_method`.'
-
-        # TODO: Don't call `on_send` unless the method name is in this list
-        # If you don't need `on_send` in the cop you created, remove it.
-        RESTRICT_ON_SEND = %i[bad_method].freeze
-
-        # @!method bad_method?(node)
         def_node_matcher :bad_method?, <<~PATTERN
           (send nil? :bad_method ...)
         PATTERN

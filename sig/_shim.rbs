@@ -7,4 +7,22 @@ module RuboCop
   class Config
     def initialize: (Hash[untyped, untyped], String) -> void
   end
+
+  module Cop
+    class Base
+      extend AST::NodePattern::Macros
+
+      def add_offense: (untyped node) -> void
+    end
+  end
+end
+
+module RuboCop
+  module AST
+    module NodePattern
+      module Macros
+        def def_node_matcher: (Symbol, String) -> void
+      end
+    end
+  end
 end

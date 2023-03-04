@@ -1,0 +1,8 @@
+module RuboCop
+  module Cop
+    module Grep
+      class Grep < ::RuboCop::Cop::Base
+      end
+    end
+  end
+end
