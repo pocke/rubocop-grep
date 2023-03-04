@@ -1,29 +1,14 @@
 ---
 sources:
-- name: ruby/gem_rbs_collection
+- type: git
+  name: ruby/gem_rbs_collection
+  revision: 7765c1821affc50f5b09fda8fba3a7c9b429b216
   remote: https://github.com/ruby/gem_rbs_collection.git
-  revision: main
   repo_dir: gems
 path: ".gem_rbs_collection"
 gems:
-- name: pathname
-  version: '0'
-  source:
-    type: stdlib
-- name: yaml
-  version: '0'
-  source:
-    type: stdlib
 - name: ast
   version: '2.4'
-  source:
-    type: git
-    name: ruby/gem_rbs_collection
-    revision: 03012a67119a706eb045ed758b8366b03eefc3cd
-    remote: https://github.com/ruby/gem_rbs_collection.git
-    repo_dir: gems
-- name: rainbow
-  version: '3.0'
   source:
     type: git
     name: ruby/gem_rbs_collection
@@ -34,7 +19,35 @@ gems:
   version: '0'
   source:
     type: stdlib
+- name: json
+  version: '0'
+  source:
+    type: stdlib
+- name: parallel
+  version: '1.20'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 7765c1821affc50f5b09fda8fba3a7c9b429b216
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: pathname
+  version: '0'
+  source:
+    type: stdlib
 - name: pstore
+  version: '0'
+  source:
+    type: stdlib
+- name: rainbow
+  version: '3.0'
+  source:
+    type: git
+    name: ruby/gem_rbs_collection
+    revision: 03012a67119a706eb045ed758b8366b03eefc3cd
+    remote: https://github.com/ruby/gem_rbs_collection.git
+    repo_dir: gems
+- name: yaml
   version: '0'
   source:
     type: stdlib
