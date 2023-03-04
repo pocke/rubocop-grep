@@ -29,6 +29,12 @@ RSpec.describe RuboCop::Cop::Grep::Grep, :config do
         bar
       RUBY
     end
+
+    it 'does not register an office when the regexp matches in a comment' do
+      expect_no_offenses(<<~RUBY)
+        # foo
+      RUBY
+    end
   end
 
   context 'with a config including multiple rules' do

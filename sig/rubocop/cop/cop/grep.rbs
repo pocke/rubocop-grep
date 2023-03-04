@@ -8,17 +8,19 @@ module RuboCop
           'Rules' => Array[{
             'Pattern' => String | Array[String],
             'Message' => String,
-            'Comment' => bool?,
+            'MatchInComment' => bool?,
           }]
         }
 
         def on_new_investigation: () -> void
 
-        def position_from_matchdata: (MatchData) -> {
+        private def position_from_matchdata: (MatchData) -> {
           line: Integer,
           column: Integer,
           length: Integer,
         }
+
+        private def in_comment?: (MatchData) -> bool
 
         def cop_config: () -> config
       end

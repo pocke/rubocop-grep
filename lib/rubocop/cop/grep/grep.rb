@@ -49,6 +49,8 @@ module RuboCop
           source = processed_source.raw_source
 
           cop_config['Rules'].each do |rule|
+            match_comment = rule['MatchInComment']
+
             # @type var patterns: Array[String]
             patterns = _ = Array(rule['Pattern'])
 
@@ -56,16 +58,18 @@ module RuboCop
               re = Regexp.new(pat)
               from = 0
               while m = re.match(source, from)
-                pos = position_from_matchdata(m)
-                range = source_range(processed_source.buffer, pos[:line], pos[:column], pos[:length])
-                add_offense(range, message: rule['Message'])
+                if match_comment || !in_comment?(m)
+                  pos = position_from_matchdata(m)
+                  range = source_range(processed_source.buffer, pos[:line], pos[:column], pos[:length])
+                  add_offense(range, message: rule['Message'])
+                end
                 from = m.end(0) || raise
               end
             end
           end
         end
 
-        def position_from_matchdata(m)
+        private def position_from_matchdata(m)
           pre_match = m.pre_match
           line = pre_match.count("\n") + 1
           column = pre_match[/^([^\n]*)\z/, 1]&.size || 0
@@ -73,6 +77,11 @@ module RuboCop
           length = matched.size
 
           { line: line, column: column, length: length }
+        end
+
+        private def in_comment?(m)
+          line = position_from_matchdata(m)[:line]
+          processed_source.comments.any? { |c| c.loc.line == line }
         end
       end
 
