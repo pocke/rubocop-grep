@@ -26,6 +26,7 @@ RSpec.describe RuboCop::Cop::Grep::Grep, :config do
 
     it 'does not register an offense when the regexp does not matche' do
       expect_no_offenses(<<~RUBY)
+        FOO
         bar
       RUBY
     end
@@ -69,6 +70,39 @@ RSpec.describe RuboCop::Cop::Grep::Grep, :config do
         ab
         ^^ it is not good
         cz
+      RUBY
+    end
+  end
+
+  context 'with a config including Ignorecase option' do
+    let(:cop_config) { {
+      'Rules' => [
+        { 'Pattern' => 'foo', 'Message' => 'it is not good', 'Ignorecase' => true },
+      ],
+    } }
+
+    it 'registers an offence' do
+      expect_offense(<<~RUBY)
+        Foo
+        ^^^ it is not good
+        FOO
+        ^^^ it is not good
+      RUBY
+    end
+  end
+
+  context 'with a config including Extended option' do
+    let(:cop_config) { {
+      'Rules' => [
+        { 'Pattern' => 'f o o', 'Message' => 'it is not good', 'Extended' => true },
+      ],
+    } }
+
+    it 'registers an offence' do
+      expect_offense(<<~RUBY)
+        foo
+        ^^^ it is not good
+        f o o
       RUBY
     end
   end
