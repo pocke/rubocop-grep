@@ -54,8 +54,9 @@ module RuboCop
             # @type var patterns: Array[String]
             patterns = _ = Array(rule['Pattern'])
 
+            opt = regexp_option(rule)
             patterns.each do |pat|
-              re = Regexp.new(pat)
+              re = Regexp.new(pat, opt)
               from = 0
               while m = re.match(source, from)
                 if match_comment || !in_comment?(m)
@@ -82,6 +83,14 @@ module RuboCop
         private def in_comment?(m)
           line = position_from_matchdata(m)[:line]
           processed_source.comments.any? { |c| c.loc.line == line }
+        end
+
+        private def regexp_option(rule)
+          opt = 0
+          opt |= Regexp::MULTILINE if rule['Multiline']
+          opt |= Regexp::EXTENDED if rule['Extended']
+          opt |= Regexp::IGNORECASE if rule['Ignorecase']
+          opt
         end
       end
 

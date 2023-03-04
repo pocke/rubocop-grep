@@ -4,12 +4,19 @@ module RuboCop
       class Grepx < ::RuboCop::Cop::Base
         include RangeHelp
 
+        type rule = {
+          'Pattern' => String | Array[String],
+          'Message' => String,
+          'MatchInComment' => bool?,
+
+          # Regexp options
+          'Multiline' => bool?,
+          'Extended' => bool?,
+          'Ignorecase' => bool?,
+        }
+
         type config = {
-          'Rules' => Array[{
-            'Pattern' => String | Array[String],
-            'Message' => String,
-            'MatchInComment' => bool?,
-          }]
+          'Rules' => Array[rule]
         }
 
         def on_new_investigation: () -> void
@@ -21,6 +28,8 @@ module RuboCop
         }
 
         private def in_comment?: (MatchData) -> bool
+
+        private def regexp_option: (rule) -> Integer
 
         def cop_config: () -> config
       end

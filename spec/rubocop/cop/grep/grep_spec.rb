@@ -53,4 +53,23 @@ RSpec.describe RuboCop::Cop::Grep::Grep, :config do
       RUBY
     end
   end
+
+  context 'with a config including Multiline option' do
+    let(:cop_config) { {
+      'Rules' => [
+        { 'Pattern' => 'a.+?z', 'Message' => 'it is not good', 'Multiline' => true },
+      ],
+    } }
+
+    it 'registers an offence' do
+      expect_offense(<<~RUBY)
+        abcz
+        ^^^^ it is not good
+
+        ab
+        ^^ it is not good
+        cz
+      RUBY
+    end
+  end
 end
