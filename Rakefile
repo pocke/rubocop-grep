@@ -2,16 +2,13 @@
 
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
+require "rubocop/rake_task"
 
 RSpec::Core::RakeTask.new(:spec)
 
-require "rubocop/rake_task"
-
 RuboCop::RakeTask.new
 
-task default: %i[spec rubocop]
-
-require 'rspec/core/rake_task'
+task default: %i[spec rubocop steep]
 
 RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']
@@ -34,4 +31,8 @@ task :new_cop, [:cop] do |_task, args|
   generator.inject_config(config_file_path: 'config/default.yml')
 
   puts generator.todo
+end
+
+task :steep do
+  sh 'steep', 'check'
 end
