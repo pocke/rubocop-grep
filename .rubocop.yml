@@ -1,3 +1,20 @@
-Naming/FileName:
- Exclude:
-   - lib/rubocop-grep.rb
+Style:
+  Enabled: false
+Metrics:
+  Enabled: false
+Naming:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Lint/AssignmentInCondition:
+  Enabled: false
+
+Layout/MultilineBlockLayout:
+  Exclude:
+    - spec/**/*.rb
+
+Layout/BlockEndNewline:
+  Exclude:
+    - spec/**/*.rb
