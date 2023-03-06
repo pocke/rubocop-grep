@@ -50,7 +50,7 @@ Grep/Grep:
         - 'binding\.pry'
       Message: 'Debug code remains'
 
-    # The pattern matches code comments with `comment: true` option (default: false).
+    # The pattern matches code comments with `MatchInComment: true` option (default: false).
     - Pattern: 'Rspec'
       Message: 'Rspec is a typo of RSpec'
       MatchInComment: true
