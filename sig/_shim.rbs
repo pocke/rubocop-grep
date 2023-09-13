@@ -11,10 +11,16 @@ module RuboCop
   module Cop
     class Base
       extend AST::NodePattern::Macros
+      self.@badge: Badge
 
+      def self.badge: () -> Badge
       def add_offense: (untyped node, ?message: String) -> void
       def cop_config: () -> Hash[String, untyped]
       def processed_source: () -> AST::ProcessedSource
+    end
+
+    class Badge
+      def self.for: (String) -> Badge
     end
 
     module RangeHelp

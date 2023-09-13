@@ -54,6 +54,15 @@ module RuboCop
           opt |= Regexp::IGNORECASE if rule['Ignorecase']
           opt
         end
+
+        # workaround for https://github.com/pocke/rubocop-grep/issues/4
+        def self.badge
+          if name == "RuboCop::Cop::Grep::Grepx"
+            @badge ||= Badge.for("RuboCop::Cop::Grep::Grep")
+          else
+            super
+          end
+        end
       end
 
       Grep = _ = Grepx
