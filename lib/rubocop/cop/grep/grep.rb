@@ -4,7 +4,7 @@ module RuboCop
   module Cop
     module Grep
       # Detect code snippets which are matched with specified Regexps.
-      class Grepx < Base
+      class Grep < Base
         include RangeHelp
 
         def on_new_investigation
@@ -55,8 +55,6 @@ module RuboCop
           opt
         end
       end
-
-      Grep = _ = Grepx
     end
   end
 end
