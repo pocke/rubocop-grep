@@ -24,14 +24,14 @@ RSpec.describe RuboCop::Cop::Grep::Grep, :config do
       RUBY
     end
 
-    it 'does not register an offense when the regexp does not matche' do
+    it 'does not register an offense when the regexp does not match' do
       expect_no_offenses(<<~RUBY)
         FOO
         bar
       RUBY
     end
 
-    it 'does not register an office when the regexp matches in a comment' do
+    it 'does not register an offence when the regexp matches in a comment' do
       expect_no_offenses(<<~RUBY)
         # foo
       RUBY
